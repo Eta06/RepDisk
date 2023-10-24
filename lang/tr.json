@@ -1,0 +1,9 @@
+{
+  "connected_disks": "Bağlı Sürücüler: ",
+  "inserted_disk": "Takılan Sürücü: ",
+  "cant_create_file_on_disk": "Sürücüde dosya oluşturulamıyor",
+  "check_disk_permissions": "Sürücü izinlerinizi kontrol edin.",
+  "press_any_key": "Devam etmek için herhangi bir tuşa basın...",
+  "cant_load_lang": "Dil dosyası yüklenemedi!",
+  "unknown_error": "Bilinmeyen bir hata oluştu!"
+}

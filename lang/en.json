@@ -1,0 +1,9 @@
+{
+  "connected_disks": "Connected Disks: ",
+  "inserted_disk": "Inserted Disk: ",
+  "cant_create_file_on_disk": "Cannot create config file inside the drive.",
+  "check_disk_permissions": "Please check your disk permission.",
+  "press_any_key": "Press any key to continue...",
+  "cant_load_lang": "Cannot load language file!",
+  "unknown_error": "Unknown error occurred!"
+}
