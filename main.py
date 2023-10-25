@@ -1,6 +1,5 @@
 import os
 import json
-import time
 import random
 import shutil
 
@@ -22,6 +21,7 @@ class bcolors:
     RED = "\033[31m"
 
 
+# noinspection PyShadowingNames,PyBroadException
 def trycopy(drive_letter, driver_id):
     try:
         driver_id = json.loads(driver_id)
@@ -44,10 +44,12 @@ def trycopy(drive_letter, driver_id):
     for root, dirs, files in os.walk(drive_letter):
         for file in files:
             source = os.path.join(root, file)
+            # noinspection PyUnboundLocalVariable
             target = os.path.join(path + "\\drivebackups\\" + driver_id["driver-id"], file)
             shutil.copy(source, target)
 
 
+# noinspection PyShadowingNames
 def generate_driver_id():
     # This function generates a random driver id.
     ints = [random.randint(0, 9) for _ in range(10)]
@@ -59,6 +61,7 @@ def generate_driver_id():
     return "".join([str(i) for i in ints] + strs)
 
 
+# noinspection PyShadowingNames
 def get_connected_disks():
     disk_list = []
     for i in range(65, 91):
@@ -69,6 +72,7 @@ def get_connected_disks():
     return disk_list
 
 
+# noinspection PyShadowingNames
 def show_newly_connected_disks(old_list, new_list):
     """
     This function shows newly connected disks.
@@ -82,6 +86,7 @@ def show_newly_connected_disks(old_list, new_list):
     return new_disks
 
 
+# noinspection PyAssignmentToLoopOrWithParameter,PyBroadException
 def read_or_create_config_file(drive_letter):
     """
     This function reads or creates a config file on the drive.
@@ -129,6 +134,7 @@ def read_or_create_config_file(drive_letter):
         exit()
 
 
+# noinspection PyShadowingNames
 def load_language(default_language):
     try:
         with open("appconfig.json", "r") as f:
@@ -176,4 +182,3 @@ if __name__ == "__main__":
             print(bcolors.WARNING + lang["inserted_disk"] + str(new_disks[0]) + bcolors.ENDC)
             driver_id = read_or_create_config_file(new_disks[0])
             trycopy(new_disks[0], driver_id)
-
