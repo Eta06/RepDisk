@@ -40,7 +40,7 @@ def trycopy(drive_letter, driver_id):
             print(bcolors.RED + bcolors.BOLD + lang["unknown_error"])
             input(lang["press_any_key"])
             exit()
-    # Dosyaları kopyala
+    # Copy files
     for root, dirs, files in os.walk(drive_letter):
         for file in files:
             source = os.path.join(root, file)
@@ -49,13 +49,13 @@ def trycopy(drive_letter, driver_id):
 
 
 def generate_driver_id():
-    # 10 tane rastgele int üret
+    # This function generates a random driver id.
     ints = [random.randint(0, 9) for _ in range(10)]
 
-    # 10 tane rastgele str üret
+    # Generate 10 random letters
     strs = [chr(random.randint(ord("a"), ord("z"))) for _ in range(10)]
 
-    # ints ve strs'i birleştir
+    # Merge the lists
     return "".join([str(i) for i in ints] + strs)
 
 
@@ -71,12 +71,12 @@ def get_connected_disks():
 
 def show_newly_connected_disks(old_list, new_list):
     """
-    Bu fonksiyon, yeni bağlanan diskleri gösterir ve eski listeyi günceller.
+    This function shows newly connected disks.
     Args:
-      old_list: Önceki disk listesi.
-      new_list: Yeni disk listesi.
+        old_list: The old disk list.
+        new_list: The new disk list.
     Returns:
-      None
+        The newly connected disks.
     """
     new_disks = [disk for disk in new_list if disk not in old_list]
     return new_disks
@@ -84,13 +84,13 @@ def show_newly_connected_disks(old_list, new_list):
 
 def read_or_create_config_file(drive_letter):
     """
-    Bu fonksiyon, belirtilen sürücüde repdisk.config dosyasını okur veya oluşturur.
+    This function reads or creates a config file on the drive.
 
     Args:
-    drive_letter: Dosyanın bulunduğu sürücünün sürücü harfi.
+    drive_letter: The drive letter of the drive.
 
     Returns:
-    Dosyanın içeriği.
+    The config file data.
     """
 
     file_path = f"{drive_letter}\\repdisk-drive.config"
@@ -127,6 +127,8 @@ def read_or_create_config_file(drive_letter):
         print(bcolors.RED+bcolors.BOLD+lang["unknown_error"])
         input(lang["press_any_key"])
         exit()
+
+
 def load_language(default_language):
     try:
         with open("appconfig.json", "r") as f:
